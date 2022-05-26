@@ -43,6 +43,7 @@ func (b *box) ExtractByIndex(i int) (Shape, error) {
 		return s, err
 	}
 	b.shapes = append(b.shapes[:i], b.shapes[i+1:]...)
+	b.shapesCapacity -= 1
 	return s, nil
 }
 
@@ -81,8 +82,8 @@ func (b *box) SumArea() float64 {
 // whether circles are not exist in the list, then returns an error
 func (b *box) RemoveAllCircles() error {
 	c := 0
-	for i, v := range b.shapes {
-		if _, ok := v.(Circle); ok {
+	for i := 0; i<= len(b.shapes); i++ {
+		if _, ok := b.shapes[i].(Circle); ok {
 			copy(b.shapes[i:], b.shapes[i+1:])
 			b.shapes = b.shapes[:len(b.shapes)-1]
 			c++
