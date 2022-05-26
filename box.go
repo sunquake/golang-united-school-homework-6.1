@@ -82,7 +82,7 @@ func (b *box) SumArea() float64 {
 func (b *box) RemoveAllCircles() error {
 	c := 0
 	for i, v := range b.shapes {
-		if s, ok := v.(Circle); ok {
+		if _, ok := v.(Circle); ok {
 			copy(b.shapes[i:], b.shapes[i+1:])
 			b.shapes = b.shapes[:len(b.shapes)-1]
 			c++
