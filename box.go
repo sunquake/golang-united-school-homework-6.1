@@ -28,7 +28,7 @@ func (b *box) AddShape(shape Shape) error {
 // GetByIndex allows getting shape by index
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) GetByIndex(i int) (Shape, error) {
-	if i >= 0 && i <= b.shapesCapacity {
+	if i >= 0 && i <= b.shapesCapacity - 1 {
 		return b.shapes[i], nil
 	}
 	return nil, fmt.Errorf("out of bounds")
