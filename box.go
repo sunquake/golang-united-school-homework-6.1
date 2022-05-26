@@ -31,7 +31,7 @@ func (b *box) GetByIndex(i int) (Shape, error) {
 	if i <= b.shapesCapacity {
 		return b.shapes[i], nil
 	}
-	return Shape{}, fmt.Errorf("out of bounds")
+	return nil, fmt.Errorf("out of bounds")
 }
 
 // ExtractByIndex allows getting shape by index and removes this shape from the list.
@@ -81,7 +81,6 @@ func (b *box) SumArea() float64 {
 // whether circles are not exist in the list, then returns an error
 func (b *box) RemoveAllCircles() error {
 	c := 0
-	s := Shape{}
 	for i, v := range b.shapes {
 		if s, ok := b.(Circle); ok {
 			copy(b.shapes[i:], b.shapes[i+1:])
