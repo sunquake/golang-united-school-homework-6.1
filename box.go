@@ -88,6 +88,7 @@ func (b *box) RemoveAllCircles() error {
 			c++
 		}
 	}
+	b.shapesCapacity -= c
 	if c != 0 {return nil}
 	return fmt.Errorf("no circles")
 }
