@@ -43,7 +43,6 @@ func (b *box) ExtractByIndex(i int) (Shape, error) {
 		return s, err
 	}
 	b.shapes = append(b.shapes[:i], b.shapes[i+1:]...)
-	b.shapesCapacity -= 1
 	return s, nil
 }
 
@@ -89,7 +88,6 @@ func (b *box) RemoveAllCircles() error {
 			c++
 		}
 	}
-	b.shapesCapacity -= c
 	if c != 0 {return nil}
 	return fmt.Errorf("no circles")
 }
